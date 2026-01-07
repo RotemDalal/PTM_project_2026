@@ -23,3 +23,7 @@ This project demonstrates advanced software architecture principles:
 1. Clone the repository.
 2. For automated testing, ensure all classes are in the `test` package.
 3. Use `TopicManagerSingleton.get()` to manage topics and `Graph.createFromTopics()` to analyze the infrastructure.
+## 🛠 Advanced Design Patterns & Features (Milestone 4)
+* **Decorator Pattern**: Implemented `ParallelAgent` as a decorator that wraps any `Agent` to provide asynchronous processing without modifying the original logic.
+* **Active Object Pattern**: Used `BlockingQueue` and dedicated threads in `ParallelAgent` to decouple message handling from the main execution flow.
+* **Dynamic Configuration (Java Reflection)**: The `GenericConfig` class utilizes the Reflection API to instantiate agents dynamically based on class names provided in a configuration file.
