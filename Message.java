@@ -1,5 +1,4 @@
 package test;
-
 import java.util.Date;
 
 public class Message {
@@ -13,11 +12,10 @@ public class Message {
         this.data = text.getBytes();
         this.date = new Date();
         double d;
-        try { d = Double.parseDouble(text); }
+        try { d = Double.parseDouble(text); } 
         catch (NumberFormatException e) { d = Double.NaN; }
         this.asDouble = d;
     }
-
     public Message(double d) { this(Double.toString(d)); }
     public Message(byte[] data) { this(new String(data)); }
 }
