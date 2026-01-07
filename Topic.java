@@ -13,9 +13,7 @@ public class Topic {
     }
 
     public void subscribe(Agent a) {
-        if (!subs.contains(a)) {
-            subs.add(a);
-        }
+        if (!subs.contains(a)) subs.add(a);
     }
 
     public void unsubscribe(Agent a) {
@@ -24,17 +22,18 @@ public class Topic {
 
     public void publish(Message m) {
         for (Agent a : subs) {
-            a.callback(this.name, m);
+            a.callback(name, m);
         }
     }
 
     public void addPublisher(Agent a) {
-        if (!pubs.contains(a)) {
-            pubs.add(a);
-        }
+        if (!pubs.contains(a)) pubs.add(a);
     }
 
     public void removePublisher(Agent a) {
         pubs.remove(a);
     }
+
+    public List<Agent> getSubs() { return subs; }
+    public List<Agent> getPubs() { return pubs; }
 }

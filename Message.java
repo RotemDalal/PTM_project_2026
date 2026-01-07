@@ -8,25 +8,16 @@ public class Message {
     public final double asDouble;
     public final Date date;
 
-    public Message(String asText) {
-        this.asText = asText;
-        this.data = asText.getBytes();
+    public Message(String text) {
+        this.asText = text;
+        this.data = text.getBytes();
         this.date = new Date();
-
         double d;
-        try {
-            d = Double.parseDouble(asText);
-        } catch (NumberFormatException e) {
-            d = Double.NaN;
-        }
+        try { d = Double.parseDouble(text); }
+        catch (NumberFormatException e) { d = Double.NaN; }
         this.asDouble = d;
     }
 
-    public Message(byte[] data) {
-        this(new String(data));
-    }
-
-    public Message(double asDouble) {
-        this(Double.toString(asDouble));
-    }
+    public Message(double d) { this(Double.toString(d)); }
+    public Message(byte[] data) { this(new String(data)); }
 }
