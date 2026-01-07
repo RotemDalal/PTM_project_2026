@@ -12,7 +12,7 @@ public class RequestParser {
         String firstLine = reader.readLine();
         if (firstLine == null || firstLine.isEmpty()) return null;
 
-        // 1. ניתוח שורה ראשונה (Command URI Protocol)
+
         String[] parts = firstLine.split(" ");
         String httpCommand = parts[0];
         String fullUri = parts[1];
@@ -29,18 +29,18 @@ public class RequestParser {
                 .filter(s -> !s.isEmpty())
                 .toArray(String[]::new);
 
-        // 2. דילוג על ה-Headers (עד שורה ריקה)
+
         String line;
         while ((line = reader.readLine()) != null && !line.isEmpty()) {
-            // התעלמות מה-Headers לפי דרישות המטלה
+
         }
 
-        // 3. קריאת פרמטרים נוספים (כמו filename)
+
         while (reader.ready() && (line = reader.readLine()) != null && !line.isEmpty()) {
             parseParams(line, parameters);
         }
 
-        // 4. קריאת ה-Content - מניעת Blocking בעזרת reader.ready()
+        
         StringBuilder contentBuilder = new StringBuilder();
         while (reader.ready() && (line = reader.readLine()) != null) {
             if (line.isEmpty()) break;

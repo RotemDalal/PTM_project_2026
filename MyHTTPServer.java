@@ -32,7 +32,7 @@ public class MyHTTPServer extends Thread implements HTTPServer {
     public void run() {
         try {
             serverSocket = new ServerSocket(port);
-            serverSocket.setSoTimeout(1000); // מאפשר בדיקה של flag ה-stop כל שנייה
+            serverSocket.setSoTimeout(1000);
             while (!stop) {
                 try {
                     Socket client = serverSocket.accept();
@@ -51,7 +51,7 @@ public class MyHTTPServer extends Thread implements HTTPServer {
             RequestParser.RequestInfo ri = RequestParser.parseRequest(in);
             if (ri == null) return;
 
-            // Longest Prefix Match
+
             Servlet bestMatch = null;
             String bestUri = "";
             Map<String, Servlet> methodMap = servlets.get(ri.getHttpCommand().toUpperCase());
@@ -69,7 +69,7 @@ public class MyHTTPServer extends Thread implements HTTPServer {
                 bestMatch.handle(ri, out);
             }
         } catch (IOException e) {
-            // טיפול בשגיאת תקשורת
+
         } finally {
             try { client.close(); } catch (IOException e) {}
         }
@@ -80,6 +80,6 @@ public class MyHTTPServer extends Thread implements HTTPServer {
         try {
             if (serverSocket != null) serverSocket.close();
         } catch (IOException e) {}
-        threadPool.shutdownNow(); // סגירה מיידית של כל הטיפולים הפתוחים
+        threadPool.shutdownNow(); 
     }
 }
